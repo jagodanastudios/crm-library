@@ -28,17 +28,24 @@ function getAuthHeaders(): IRequestHeader {
     authorization?: string;
     'internal-key'?: string;
   } = {};
-  if (typeof window === 'undefined') {
+  if (SiteConfig.serviceAccountKey?.length > 0) {
     header = {
-      'internal-key': SiteConfig.internalSecretKey,
+      authorization: SiteConfig.serviceAccountKey,
     };
   } else {
-    header = {
-      authorization: `Bearer ${localStorage.getItem(
-        SiteConfig.storageKeys.TOKEN,
-      )}`,
-    };
+    console.error('env SERVICE_ACCOUNT_KEY not found');
   }
+  // } else if (typeof window === 'undefined') {
+  //   header = {
+  //     'internal-key': SiteConfig.internalSecretKey,
+  //   };
+  // } else {
+  //   header = {
+  //     authorization: `Bearer ${localStorage.getItem(
+  //       SiteConfig.storageKeys.TOKEN,
+  //     )}`,
+  //   };
+  // }
   return header;
 }
 
