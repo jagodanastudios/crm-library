@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+export * from "./types";
 import API_HELPER from './contollers';
 
 dotenv.config(); // Load environment variables

@@ -1,4 +1,4 @@
-interface IAuthSupportedMethods {
+export interface IAuthSupportedMethods {
   id: string;
   type: 'form' | 'button';
   name: string;
@@ -190,3 +190,26 @@ export interface IAsset extends Document {
   tags: string[];
   creator: string;
 }
+
+export * from './axios/types';
+export * from './axios';
+// Auth
+export * from './contollers/auth/auth.service';
+export * from './contollers/auth/configs.service';
+export * from './contollers/auth/methods.service';
+export * from './contollers/auth/settings.service';
+
+// Blogs
+export * from './contollers/blogs/blogs.service';
+export * from './contollers/blogs/blogsAuthors.service';
+export * from './contollers/blogs/blogsFolders.service';
+export * from './contollers/blogs/blogsTags.service';
+
+// Docs
+export * from './contollers/docs/docs.service';
+export * from './contollers/docs/docsAuthors.service';
+export * from './contollers/docs/docsFolders.service';
+export * from './contollers/docs/docsTags.service';
+
+// Forms
+export * from './contollers/forms/forms.service';
