@@ -1,7 +1,7 @@
 {
-  "name": "@jagodanastudios/saas-library",
+  "name": "@jagodana-studio/saas-library",
   "version": "1.0.0-rc.1",
-  "description": "",
+  "description": "Saas Library for Jagodana Studio CMS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -25,5 +25,16 @@
     "@types/crypto-js": "^4.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jagodanastudios/crm-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jagodanastudios/crm-library/issues"
+  },
+  "homepage": "https://github.com/jagodanastudios/crm-library#readme"
 }
