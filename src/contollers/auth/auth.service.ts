@@ -1,4 +1,5 @@
 import { ApiPaginationController } from '../../axios/paginationAPI';
+import { PaginationResponse } from '../../types';
 
 export interface IAccount {
   id: string;
@@ -62,13 +63,15 @@ export interface IUserToken {
 }
 
 export class AuthApis extends ApiPaginationController<IAccount> {
-  protected urlPath: string = '/api/organizations/auth';
+  protected urlPath: string = '/api';
+  private urlPath_Auth: string = `${this.urlPath}/auth`;
+  private urlPath_User: string = `${this.urlPath}/users`;
 
   async getSupportedMethods(
     screen: 'login' | 'register' | 'forgot-password' | 'reset-password',
   ): Promise<IAuthSupportedMethod[]> {
     const result = await this.get(
-      `${this.urlPath}/supported-methods`,
+      `${this.urlPath_Auth}/supported-methods`,
       { screen: screen },
       {},
     );
@@ -77,7 +80,7 @@ export class AuthApis extends ApiPaginationController<IAccount> {
 
   async getProfile(): Promise<IUserToken | null> {
     try {
-      const response = await this.get(`${this.urlPath}/profile`, {});
+      const response = await this.get(`${this.urlPath_User}/profile`, {});
       return response.data;
     } catch (e) {
       return null;
@@ -86,11 +89,16 @@ export class AuthApis extends ApiPaginationController<IAccount> {
 
   async verifyEmail(code: number): Promise<ITokenResponse> {
     const response = await this.post(
-      `${this.urlPath}/verify-email`,
+      `${this.urlPath_User}/verify-email`,
       {},
       {},
       { code },
     );
+    return response.data;
+  }
+
+  async getAccounts(): Promise<PaginationResponse<IAccount>> {
+    const response = await this.get(`${this.urlPath_User}/accounts`, {});
     return response.data;
   }
 }
