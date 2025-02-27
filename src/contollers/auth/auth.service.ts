@@ -44,6 +44,23 @@ export interface ITokenResponse {
   };
 }
 
+export interface IUserToken {
+  _id: string;
+  id: string;
+  name: string;
+  image: string;
+  email: string;
+  emailVerified: boolean;
+  deleted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+
+  org: string;
+  role: string;
+  menus: any[];
+  permissions: any[];
+}
+
 export class AuthApis extends ApiPaginationController<IAccount> {
   protected urlPath: string = '/api/organizations/auth';
 
@@ -56,6 +73,15 @@ export class AuthApis extends ApiPaginationController<IAccount> {
       {},
     );
     return result.data.data as IAuthSupportedMethod[];
+  }
+
+  async getProfile(): Promise<IUserToken | null> {
+    try {
+      const response = await this.get(`${this.urlPath}/profile`, {});
+      return response.data;
+    } catch (e) {
+      return null;
+    }
   }
 
   async verifyEmail(code: number): Promise<ITokenResponse> {
