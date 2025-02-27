@@ -11,6 +11,7 @@ import { DocAuthorsApis } from './docs/docsAuthors.service';
 import { DocFolderApis } from './docs/docsFolders.service';
 import { DocTagsApis } from './docs/docsTags.service';
 import { FormsApis } from './forms/forms.service';
+import { CollectionsApis } from './collections/collections.service';
 
 const API_HELPER = {
   auth: {
@@ -32,6 +33,7 @@ const API_HELPER = {
     tags: new DocTagsApis(),
   },
   forms: new FormsApis(),
+  collections: new CollectionsApis(),
 };
 
 export default API_HELPER;

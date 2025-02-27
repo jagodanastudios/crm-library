@@ -1,24 +1,5 @@
 import { ApiPaginationController } from '../../axios/paginationAPI';
-import { ICollection, ICollectionVersion, IUser } from '../../types';
-
-export interface IForm {
-  _id: string;
-  name: string;
-  title: string;
-  description: string;
-  formId: string;
-  collectionId: string | ICollection;
-  collectionVersionId: string | ICollectionVersion;
-  archived: boolean;
-  submissions: number;
-  published: boolean;
-  publishedAt: Date;
-  creator: string | IUser;
-
-  deleted: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { IForm } from '../../types';
 
 export class FormsApis extends ApiPaginationController<IForm> {
   protected urlPath: string = '/api/forms';

@@ -213,3 +213,6 @@ export * from './contollers/docs/docsTags.service';
 
 // Forms
 export * from './contollers/forms/forms.service';
+
+// Collections
+export * from './contollers/collections/collections.service';
