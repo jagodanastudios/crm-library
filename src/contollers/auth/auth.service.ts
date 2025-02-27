@@ -33,8 +33,19 @@ export interface IAuthSupportedMethod {
   };
 }
 
+export interface ITokenResponse {
+  success: boolean;
+  message: string;
+  data: {
+    user: {
+      name: string;
+    };
+    token: string;
+  };
+}
+
 export class AuthApis extends ApiPaginationController<IAccount> {
-  protected urlPath: string = '/api/auth';
+  protected urlPath: string = '/api/organizations/auth';
 
   async getSupportedMethods(
     screen: 'login' | 'register' | 'forgot-password' | 'reset-password',
@@ -45,5 +56,15 @@ export class AuthApis extends ApiPaginationController<IAccount> {
       {},
     );
     return result.data.data as IAuthSupportedMethod[];
+  }
+
+  async verifyEmail(code: number): Promise<ITokenResponse> {
+    const response = await this.post(
+      `${this.urlPath}/verify-email`,
+      {},
+      {},
+      { code },
+    );
+    return response.data;
   }
 }
