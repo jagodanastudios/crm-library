@@ -63,7 +63,7 @@ export interface IUserToken {
 }
 
 export class AuthApis extends ApiPaginationController<IAccount> {
-  protected urlPath: string = '/api';
+  protected urlPath: string = '/api/v1';
   private urlPath_Auth: string = `${this.urlPath}/auth`;
   private urlPath_User: string = `${this.urlPath}/users`;
 
