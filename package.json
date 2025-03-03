@@ -1,6 +1,6 @@
 {
   "name": "@jagodana-studio/saas-library",
-  "version": "1.0.0-sr.9",
+  "version": "1.0.0-sr.10",
   "description": "Saas Library for Jagodana Studio CMS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
